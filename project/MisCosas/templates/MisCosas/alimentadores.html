@@ -1,0 +1,81 @@
+{% extends 'MisCosas/base.html' %}
+    {% block contenido %}
+
+    <header id="ali">
+        <h1>Alimentadores</h1>
+    </header>
+
+    <p></p>
+
+    <div class="container-fluid">
+
+        <div class="row infoalimentadores text-center">
+            <div class="col col-md-6">
+                <section id="youtube">
+                    <h6>Alimentador</h6>
+                    <h1><i class="fab fa-youtube"></i>Youtube</h1>
+                    <p>Aqui econtraras la lista de alimentadores de youtube que se ha utilizado alguna vez</p>
+                    <p><a data-toggle="collapse" data-target="#alimentadoresyoutube" href="#">Mostrar > </a></p>
+
+                    <div id="alimentadoresyoutube" class="collapse">
+                        <br>
+                        {% for alimentadorYT in alimentadoryoutube %}
+                        <h2 class="nombreitem">
+                        <a href="{{alimentadorYT.enlace}}">{{alimentadorYT.nombre}}</a><br>
+                        </h2>
+                        <div class="row puntuacion">
+                            <div class="col col-sm-6">
+                                <h4>Items</h4>
+                                <h6>{{alimentadorYT.item_set.count}}</h6>
+                            </div>
+                            <div class="col col-sm-">
+                                <h4>Puntuacion</h4>
+                                <h6>{{alimentadorYT.puntuacion}}</h6>
+                            </div>
+                        </div>
+                            <p>
+                                <a class="enlaceitem" href="/MisCosas/youtube/{{alimentadorYT.alimentadorId}}">Mas información ></a>
+                            </p><br>
+                            <br>
+                            <br>
+                        {% endfor %}
+                    </div>
+                 </section>
+            </div>
+            <div class="col col-md-6">
+                <section id="flickr">
+                <h6>Alimentador</h6>
+
+                <h1><i class="fab fa-flickr"></i>Flickr</h1>
+                <p>Aqui econtraras la lista de alimentadores de flickr que se ha utilizado alguna vez</p>
+                <p><a data-toggle="collapse" data-target="#alimentadoresflickr" href="#">Mostrar > </a></p>
+                <div id="alimentadoresflickr" class="collapse">
+                    <br>
+                    {% for alimentadorFR in alimentadoresflickr %}
+                    <h2 class="nombreitem">
+                    <a href="{{alimentadorFR.enlace}}">{{alimentadorFR.nombre}}</a><br>
+                    </h2>
+                    <div class="row puntuacion">
+                        <div class=" col col-sm-6">
+                            <h4>Items</h4>
+                            <h6>{{alimentadorFR.item_set.count}}</h6>
+                        </div>
+                        <div class="col col-sm-6">
+                            <h4>Puntuacion</h4>
+                            <h6>{{alimentadorFR.puntuacion}}</h6>
+                        </div>
+                    </div>
+                        <p>
+                            <a class="enlaceitem" href="/MisCosas/{{alimentadorFR.type}}/{{alimentadorFR.alimentadorId}}">Mas información ></a><br>
+                        </p>
+                        <br>
+                        <br>
+                    {% endfor %}
+                </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    <p></p>
+
+    {%endblock%}

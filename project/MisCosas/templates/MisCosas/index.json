@@ -1,0 +1,45 @@
+top10[
+  {%for item in top10 %}
+  item{
+      "nombre": "{{item.nombre}}",
+      "enlace": "{{item.enlace}}",
+      "votospositivos": "{{item.votosPositivos}}",
+      "votosnegativos": "{{item.votosNegativos}}"
+      },
+  {%endfor%}
+]
+
+{% if user.is_authenticated %}
+top5[
+  {%for voto in itemsvotados %}
+  item{
+      "nombre": "{{voto.item.nombre}}",
+      "enlace": "{{voto.item.enlace}}",
+      "estadovoto": "{{voto.estado}}"
+      },
+  {%endfor%}
+]
+{%endif%}
+
+alimentadoresseleccionables[
+  alimentadoresyoutube[
+      {%for alimentadores in alimentadoresYT%}
+      alimentador{
+        "nombre": "{{alimentadores.nombre}}",
+        "enlace": "{{alimentadores.enlace}}",
+        "items": "{{alimentadores.item_set.count}}"
+        "puntuacion": "{{alimentadores.puntuacion}}"
+      },
+      {%endfor%}
+  ]
+  alimentadoresflickr[
+      {%for alimentadores in alimentadoresFR%}
+      alimentador{
+        "nombre": "{{alimentadores.nombre}}",
+        "enlace": "{{alimentadores.enlace}}",
+        "items": "{{alimentadores.item_set.count}}"
+        "puntuacion": "{{alimentadores.puntuacion}}"
+      },
+      {%endfor%}
+  ]
+]
